@@ -1,8 +1,10 @@
 //Abdülselam İsmail 23181616010
 //Bu test amaçlı kaba-taslak bir fonksiyon
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
+
 void gecmis();
 
 int main() {
@@ -13,9 +15,11 @@ int main() {
 }
 
 void gecmis(char *islem[20]) {
+    time_t zaman = time(NULL);
+    char *string_zaman = ctime(&zaman);
     FILE *gecmis;
-    gecmis = fopen("Donem-Sonu-Proje-BMT-103-GRUP5\\Bankacılık-Sistemi\\gecmis.txt","w");
-    fprintf(gecmis, "\n%s", islem);
+    gecmis = fopen("C:\\Users\\rist0\\CLionProjects\\ders\\proje\\logs\\gecmis.txt","w");
+    fprintf(gecmis, "\n%s: %s", islem, string_zaman);
     fclose(gecmis);
 
 }
