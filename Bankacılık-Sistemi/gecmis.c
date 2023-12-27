@@ -14,7 +14,7 @@ int main() {
 
 void gecmis(char *islem[20]) {
     FILE *gecmis;
-    gecmis = fopen("Donem-Sonu-Proje-BMT-103-GRUP5//Bankacılık-Sistemi//gecmis.txt","w");
+    gecmis = fopen("Donem-Sonu-Proje-BMT-103-GRUP5\\Bankacılık-Sistemi\\gecmis.txt","w");
     fprintf(gecmis, "\n%s", islem);
     fclose(gecmis);
 
