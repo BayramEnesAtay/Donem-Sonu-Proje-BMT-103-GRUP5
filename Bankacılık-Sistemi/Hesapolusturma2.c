@@ -6,27 +6,28 @@ void Hesapolusturma();
 
 int main()
 {
-    
-     Hesapolusturma();
-    
+
+    Hesapolusturma();
+
 }
 
 
 void Hesapolusturma()
 {
-    
+    int sifre2;
+
     struct hesap{
-    char isim[20];
-    char soyad[20];
-    int sifre,sifre2;
-    int bakiye;  
-    
-};
-    
+        char isim[20];
+        char soyad[20];
+        int sifre;
+        int bakiye;
+
+    };
+
     FILE *aptr;
 
     struct hesap hesap1;
-    
+
     aptr=fopen("HesapBilgisi","a+");
     printf("Olusturmak istediginiz hesabin ismini giriniz:");
     fgets(hesap1.isim,20,stdin);
@@ -40,15 +41,16 @@ void Hesapolusturma()
         scanf("%d",&hesap1.sifre);
     }
     printf("Sifrenizi tekrar girerek onaylayiniz lutfen:");
-    scanf("%d",&hesap1.sifre2);
-    while(hesap1.sifre!=hesap1.sifre2)
+    scanf("%d",&sifre2);
+    while(hesap1.sifre!=sifre2)
     {
-        printf("UYARİ!! Sifreyi yanlis girdiniz, tekrar giriniz:");
-        scanf("%d",&hesap1.sifre2);
+        printf("UYARI!! Sifreyi yanlis girdiniz, tekrar giriniz:");
+        scanf("%d",&sifre2);
     }
     printf("Bakiye = 0 TL\n");
     printf("Islem basarili,Hesabiniz olusturuldu.");
-    
+
     fprintf(aptr,"Hesap Bilgisi\n------------\nIsim:%s\nSoyisim:%s\nSifre:%d\nBakiye=0 TL",hesap1.isim,hesap1.soyad,hesap1.sifre);
-    
+
 }
+
