@@ -3,6 +3,10 @@
 //Menu daha yapımaşamasında
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include "gecmis.h"
+
 
 int main() {;
     //Komutları sürekli yazabilmesinş sağlamak adına while döngüyü kullandım
@@ -17,8 +21,19 @@ int main() {;
         }
         else if (!(strcmp(komut,"cik")))
             break;
-        else if (!(strcmp(komut,"gir")))
+        else if (!(strcmp(komut,"gir"))){
+            char kullanci[50];
+            printf("Kullanci ad-soyad bosluk birakmadan yazniz:");
+            scanf("%s",&kullanci);
             printf("hesabagir()\n");
+            if (1){
+                gecmis(("%s hesaptan giris yapildi",kullanci));
+                printf("Hesaba giris basariyla tamamladi\n");
+
+            }
+            else
+                printf("Kullanci bulunmadi (kullancı ismini doğru yazdiginizdan emin olun");
+        }
         else if (!(strcmp(komut,"olustur")))
             printf("hesapolustur()\n");
         else
