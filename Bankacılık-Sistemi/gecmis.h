@@ -5,14 +5,9 @@
 #include <time.h>
 
 
-void gecmis();
 
-int main() {
-    char *islem[10];
-    scanf("%s", &islem);
-    gecmis(islem);
-    return 0;
-}
+
+
 
 void gecmis(char *islem[20]) {
     time_t zaman = time(NULL);
