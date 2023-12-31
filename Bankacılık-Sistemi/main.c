@@ -12,7 +12,8 @@ int main() {;
     while (1){
         char komut[10];
         printf("Komut giriniz(komut listesi icin 'yardim' yaziniz):\n");
-        scanf("%s", &komut);
+        fgets(komut, 10, stdin);
+        komut[strcspn(komut, "\n")] = 0;
         int len = strlen(komut);
         for (int i = 0; i < len; i++) {
             komut[i] = tolower(komut[i]);
@@ -38,12 +39,10 @@ int main() {;
         else if (!(strcmp(komut,"olustur")))
             Hesapolusturma();
         else
-            printf("Gecerli komut giriniz(Türkçe harfleri kullanmamaya ve komutlari küçük harf\n");
+            printf("Gecerli komut giriniz(Turkce harfleri kullanmayin\n");
 
 
 
     }
     return 0;
 }
-
-
