@@ -6,16 +6,17 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "gecmis.h"
-
+#include "HesapOlusturma.h"
 
 int main() {;
-    //Komutları sürekli yazabilmesinş sağlamak adına while döngüyü kullandım
     while (1){
-      //Müşteriye kolaylık sağlamak adına komutları string türünden aldık
         char komut[10];
         printf("Komut giriniz(komut listesi icin 'yardim' yaziniz):\n");
         scanf("%s", &komut);
-      //Stringleri karşılamak için strcmp() fonksiyonunu kullandım. Fonksiyon dönüşte sıfır verdiği için önüne değil operatörü(!) kulllandım
+        int len = strlen(komut);
+        for (int i = 0; i < len; i++) {
+            komut[i] = tolower(komut[i]);
+        }
         if (!(strcmp(komut,"yardim"))){
             printf("----------------\nHesaba gir->gir \nHesap olustur->olustur\nProgramdan cik->cik\n----------------\n");
         }
@@ -35,13 +36,14 @@ int main() {;
                 printf("Kullanci bulunmadi (kullancı ismini doğru yazdiginizdan emin olun");
         }
         else if (!(strcmp(komut,"olustur")))
-            printf("hesapolustur()\n");
+            Hesapolusturma();
         else
-            printf("Gecerli komut giriniz\n");
+            printf("Gecerli komut giriniz(Türkçe harfleri kullanmamaya ve komutlari küçük harf\n");
 
 
 
     }
     return 0;
 }
+
 
