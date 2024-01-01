@@ -11,45 +11,55 @@
 #include "Hesabagiris.h"
 
 int main() {;
-    char islemler[70];
+    char islemler[100];
     while (1){
         char komut[10];
         memset(islemler,0,sizeof(islemler));
+        printf("------------------\nKomut giriniz(komut listesi icin 'yardim' yaziniz):\n");
+        fgets(komut,sizeof(komut),stdin);
+        komut[strcspn(komut,"\n")] = 0;
 
-        printf("Komut giriniz(komut listesi icin 'yardim' yaziniz):\n");
-        scanf("%s", &komut);
         int len = strlen(komut);
         for (int i = 0; i < len; i++) {
             komut[i] = tolower(komut[i]);
         }
         if (!(strcmp(komut,"yardim"))){
-            printf("----------------\nHesaba gir->gir \nHesap olustur->olustur\nProgramdan cik->cik\n----------------\n");
+            printf("------------------\nHesaba gir->gir \nHesap olustur->olustur\nProgramdan cik->cik\n");
         }
         else if (!(strcmp(komut,"cik")))
             break;
         else if (!(strcmp(komut,"gir"))){
             char kullanci[50];
-            printf("Kullanci ad-soyad bosluk birakmadan yazniz:");
-            scanf("%s",&kullanci);
+            printf("------------------\nKullanci ad-soyad bosluk birakmadan yazniz:");
+            fgets(kullanci,sizeof(kullanci)+1,stdin);
+            kullanci[strcspn(kullanci,"\n")] = 0;
             if (Hesabagiris(kullanci)==1){
-                gecmis(("%s hesaptan giris yapildi",kullanci));
                 strcat(islemler,kullanci);
-                strcat(islemler,"giris yapildi");
+                strcat(islemler," giris yapildi");
                 gecmis(islemler);
                 while (1){
-                    printf("\nYapmak istediginiz islem giriniz\n------------------\nBakiye Sorgulama->bakiye\nPara cekme->cek\nPara yatirma->yatir\nHesaptan cik->cik\n------------------\n");
-                    scanf("%s",&komut);
-
+                    memset(islemler,0,sizeof(islemler));
+                    printf("------------------\nYapmak istediginiz islem giriniz\n------------------\nBakiye Sorgulama->bakiye\nPara cekme->cek\nPara yatirma->yatir\nHesaptan cik->cik\n------------------\n");
+                    //fflush inputtaki \n'yi temizlemek için kullanıldı
+                    fflush(stdin);
+                    fgets(komut,sizeof(komut)+1,stdin);
+                    komut[strcspn(komut,"\n")] = 0;
                     int len = strlen(komut);
                     for (int i = 0; i < len; i++) {
                         komut[i] = tolower(komut[i]);
                     }
                     if (!(strcmp(komut,"bakiye"))){
                         BakiyeSorgulama(kullanci);
+                        strcat(islemler,kullanci);
+                        strcat(islemler," bakiye sorgulama");
+                        gecmis(islemler);
 
                     }
-                    else if (!(strcmp(komut,"cik")))
+                    else if (!(strcmp(komut,"cik"))){
+                        
+                        printf("------------------\nCikis basariyla yapildi\n");
                         break;
+                    }
                 }
 
 
@@ -72,3 +82,4 @@ int main() {;
     }
     return 0;
 }
+
