@@ -1,9 +1,6 @@
 //Muhammed Ali Atik 23181616601
 //Para yatirma,cekme, bakiye sorgulama.
 
-//Muhammed Ali Atik 23181616601
-//Para yatirma,cekme, bakiye sorgulama.
-
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -15,7 +12,7 @@ void BakiyeSorgulama(char kullanici[50]) {
     FILE *dosya = fopen(dosya_adi, "r");
     if (dosya == NULL) {
         printf(dosya_adi);
-        printf("Dosya acilamadi!\n");
+        printf("------------------\nDosya acilamadi!\n");
 
     }
 
@@ -24,7 +21,7 @@ void BakiyeSorgulama(char kullanici[50]) {
     for (int i = 1; i <= 5; i++) {
         fgets(satir6, 30, dosya);
         if (i == 5) {
-            printf("%s", satir6);
+            printf("------------------\n%s\n", satir6);
             break;
         }
     }
