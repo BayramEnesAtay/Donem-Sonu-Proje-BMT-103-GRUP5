@@ -6,7 +6,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "gecmis.h"
-#include "HesapOlusturma.h"
+#include "Hesapolusturma.h"
+#include "ParaCekme-Yatirma_bakiyeSorgulama.h"
 
 int main() {;
     while (1){
@@ -32,12 +33,19 @@ int main() {;
                 gecmis(("%s hesaptan giris yapildi",kullanci));
                 printf("Hesaba giris basariyla tamamladi\n");
 
+
             }
             else
                 printf("Kullanci bulunmadi (kullancı ismini doğru yazdiginizdan emin olun");
         }
-        else if (!(strcmp(komut,"olustur")))
-            Hesapolusturma();
+        else if (!(strcmp(komut,"olustur"))){
+            char kullanci[50];
+            Hesapolusturma(kullanci);
+            char islem1[70];
+            strcat(islem1,kullanci);
+            strcat(islem1," hesap olusturuldu");
+            gecmis(islem1);
+        }
         else
             printf("Gecerli komut giriniz(Turkce harfleri kullanmayin\n");
 
