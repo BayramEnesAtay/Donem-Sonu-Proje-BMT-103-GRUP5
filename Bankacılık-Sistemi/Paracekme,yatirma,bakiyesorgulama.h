@@ -1,9 +1,14 @@
 //Muhammed Ali Atik 23181616601
 //Para yatirma,cekme, bakiye sorgulama.
 
-int BakiyeSorgulama(int*aptr) {
+#include<stdio.h>
+#include<stdlib.h>
+
+int BakiyeSorgulama(char *kullanici) {
     char dosya_adi[100];
-    snprintf(dosya_adi, sizeof(dosya_adi), "%s.txt", *aptr);
+
+
+    snprintf(dosya_adi, sizeof(dosya_adi), "%s.txt", *kullanici);
     FILE *dosya = fopen(dosya_adi, "r");
     if (dosya == NULL) {
         printf("Dosya acilamadi!\n");
@@ -11,7 +16,14 @@ int BakiyeSorgulama(int*aptr) {
     }
 
     int bakiye;
-    fscanf(dosya, "%*s %*s %*d %d", &bakiye);
+    char satir6[30];
+    for (int i = 1; i <= 5; i++) {
+        fgets(satir6, 30, dosya);
+        if (i == 5) {
+            printf("%s", satir6);
+            break;
+        }
+    }
     fclose(dosya);
 
     return bakiye;
