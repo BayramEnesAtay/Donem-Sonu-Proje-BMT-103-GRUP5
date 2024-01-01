@@ -1,5 +1,7 @@
 //Bayram Enes Atay 23181616059
 //Hesaba giris fonksıyonunun son halidir.
+//Bayram Enes Atay 23181616059
+//Hesaba giris fonksıyonunun son halidir.
 #include<stdio.h>
 #include<errno.h>
 #include<string.h>
@@ -31,13 +33,12 @@ int Hesabagiris(char kullanici[])
         printf("Error number:%d",errno);
     }
     else {
-        printf("\nIsminizi giriniz(Bitisik yaziniz):");
-        scanf("%s",&hesap.isim);
-        printf("test");
+        printf("------------------\nIsminizi giriniz(Bitisik yaziniz):");
+        fgets(hesap.isim, sizeof(hesap.isim),stdin);
+        hesap.isim[strcspn(hesap.isim,"\n")] = 0;
         char*kelime1,*kelime2;
         kelime1=strtok(hesap.isim," ");
         kelime2=strtok(NULL," ");
-        printf("test");
         if(kelime2==NULL)
         {
             strcpy(hesap.isim,kelime1);
@@ -51,7 +52,7 @@ int Hesabagiris(char kullanici[])
             char *kelime = strtok(satir1, " ");
             while (kelime != NULL) {
                 if (strcmp(kelime, hesap.isim) == 0) {
-                    printf("Dogru girdiniz.");
+                    printf("------------------\nDogru girdiniz.\n");
                     sayac3+=1;
                 }
                 kelime = strtok(NULL, " ");
@@ -59,13 +60,15 @@ int Hesabagiris(char kullanici[])
         }
         if(sayac3==0)
         {
-            printf("Yanlis girdiniz.");
+            printf("------------------\nYanlis girdiniz.\n");
+            fclose(giris);
             return 0;
         }
         fseek(giris, 0, SEEK_SET);
 
-        printf("\nSoyisminizi giriniz:");
-        scanf("%s",&hesap.soyisim);
+        printf("------------------\nSoyisminizi giriniz:");
+        fgets(hesap.soyisim, sizeof(hesap.soyisim),stdin);
+        hesap.soyisim[strcspn(hesap.soyisim,"\n")] = 0;
 
 
         while (fgets(satir2, 30, giris) != NULL) {
@@ -73,7 +76,7 @@ int Hesabagiris(char kullanici[])
             char *kelime3 = strtok(satir2, " ");
             while (kelime3 != NULL) {
                 if (strcmp(kelime3, hesap.soyisim) == 0) {
-                    printf("Dogru girdiniz.");
+                    printf("------------------\nDogru girdiniz.");
                     sayac+=1;
                 }
                 kelime3 = strtok(NULL, " ");
@@ -82,17 +85,17 @@ int Hesabagiris(char kullanici[])
         if(sayac==0)
         {
             printf("Yanlis girdiniz.");
+            fclose(giris);
             return 0;
         }
         fseek(giris, 0, SEEK_SET);
 
-        printf("\nSifrenizi giriniz:");
-        scanf("%4s",&hesap.sifre);
+        printf("\n------------------\nSifrenizi giriniz:");
+        fgets(hesap.sifre,sizeof(hesap.sifre)+1,stdin);
+        hesap.sifre[strcspn(hesap.sifre,"\n")] = 0;
 
 
 
-
-        int dosyasifresi;
 
         while(fgets(satir3,30,giris)!=NULL)
         {
@@ -101,9 +104,9 @@ int Hesabagiris(char kullanici[])
             while(kelime4!=NULL)
             {
                 if(strcmp(kelime4,hesap.sifre)==0) {
-                    printf("Dogru girdiniz.");
+                    printf("------------------\nDogru girdiniz.");
                     sayac2+=1;
-                    printf("\nHesaba basarili bir sekilde giris yapildi!!");
+                    printf("\n------------------\nHesaba basarili bir sekilde giris yapildi!!\n");
                     return 1;
                 }
                 kelime4=strtok(NULL," ");
@@ -112,8 +115,8 @@ int Hesabagiris(char kullanici[])
         }
         if(sayac2==0)
         {
-            printf("Yanlis girdiniz.");
-            printf("\nHesaba giris yapilamadi!!");
+            printf("------------------\nYanlis girdiniz.");
+            printf("\n------------------\nHesaba giris yapilamadi!!\n");
             fclose(giris);
             return 0;
         }
