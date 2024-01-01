@@ -1,5 +1,10 @@
 //Bayram Enes Atay 23181616059
 //hesapolusturma fonksıyonu.//En yeni olan bu.
+#include<stdio.h>
+#include<string.h>
+#include <ctype.h>
+
+
 void Hesapolusturma(char dosyaismi[50]) {
     int sifre2;
 
@@ -16,7 +21,10 @@ void Hesapolusturma(char dosyaismi[50]) {
     struct hesap hesap1;
 
     printf("------------------\nHesabinizin bankada var olabilmesi icin oncelike isim ve soyisim giriniz(kucuk harf ve bitisik olarak):");
-    scanf("%s",dosyaismi);
+    fgets(dosyaismi, 51,stdin);
+    dosyaismi[strcspn(dosyaismi,"\n")] = 0;
+    fflush(stdin);
+
 
     int len = strlen(dosyaismi);
     for (int i = 0; i < len; i++)
@@ -36,8 +44,18 @@ void Hesapolusturma(char dosyaismi[50]) {
         if (dosya == NULL) {
             printf("------------------\nHesap olusturulamadi.");
         } else {
-            printf("------------------\nOlusturmak istediginiz isminizi giriniz(buyuk kucuk harfe dikkat edin;birden fazla isminiz varsa bitişik yaziniz ):");
-            scanf("%s",&hesap1.isim);
+            char *kelime1,*kelime2;
+
+            printf("------------------\nOlusturmak istediginiz isminizi giriniz(buyuk kucuk harfe dikkat edin):");
+            fgets(hesap1.isim, sizeof(hesap1.isim)+1,stdin);
+            hesap1.isim[strcspn(hesap1.isim,"\n")] = 0;
+            kelime1=strtok(hesap1.isim," ");
+            kelime2=strtok(NULL," ");
+            if(kelime2==NULL)
+            {
+                kelime2="";
+            }
+
             printf("------------------\nSoyismini giriniz(buyuk kucuk harfe dikkat edin):");
             scanf("%s",&hesap1.soyad);
             printf("------------------\nHesaba giris sifrenizi belirleyiniz(4 haneli):");
@@ -56,9 +74,10 @@ void Hesapolusturma(char dosyaismi[50]) {
             printf("------------------\nIslem basarili,Hesabiniz olusturuldu\n.");
 
 
-            fprintf(dosya, "Hesap Bilgisi\nIsim : %s\nSoyisim : %s\nSifre : %d\nBakiye : 0 TL",hesap1.isim,hesap1.soyad, hesap1.sifre);
+            fprintf(dosya, "Hesap Bilgisi\nIsim : %s%s\nSoyisim : %s\nSifre : %d\nBakiye : 0 TL",kelime1,kelime2,hesap1.soyad, hesap1.sifre);
+
             fclose(dosya);
+            fflush(stdin);
         }
 
     }
-
