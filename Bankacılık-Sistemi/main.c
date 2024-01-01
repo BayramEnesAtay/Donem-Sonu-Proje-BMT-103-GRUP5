@@ -8,6 +8,7 @@
 #include "gecmis.h"
 #include "Hesapolusturma.h"
 #include "ParaCekme-Yatirma_bakiyeSorgulama.h"
+#include "Hesabagiris.h"
 
 int main() {;
     char islemler[70];
@@ -16,8 +17,8 @@ int main() {;
         memset(islemler,0,sizeof(islemler));
 
         printf("Komut giriniz(komut listesi icin 'yardim' yaziniz):\n");
-        fgets(komut, 10, stdin);
-        komut[strcspn(komut, "\n")] = 0;
+        fgets(komut, sizeof(komut),stdin);
+        komut[strcspn(komut,"\n")]=0;
         int len = strlen(komut);
         for (int i = 0; i < len; i++) {
             komut[i] = tolower(komut[i]);
@@ -30,19 +31,18 @@ int main() {;
         else if (!(strcmp(komut,"gir"))){
             char kullanci[50];
             printf("Kullanci ad-soyad bosluk birakmadan yazniz:");
-            fgets(kullanci, sizeof(kullanci), stdin);
-            komut[strcspn(komut, "\n")] = 0;
-            printf("hesabagir()\n");
-            if (1){
+            fgets(kullanci, sizeof(kullanci),stdin);
+            kullanci[strcspn(kullanci,"\n")]=0;
+            if (Hesabagiris(kullanci)==1){
                 gecmis(("%s hesaptan giris yapildi",kullanci));
-                printf("Hesaba giris basariyla tamamladi\n");
                 strcat(islemler,kullanci);
                 strcat(islemler,"giris yapildi");
                 gecmis(islemler);
                 while (1){
-                    printf("Yapmak istediğiniz işlem giriniz\nBakiye Sorgulama->bakiye\nPara cekme->cek\nPara yatirma->yatir\nHesaptan cik->cik\n");
-                    fgets(komut, 10, stdin);
-                    komut[strcspn(komut, "\n")] = 0;
+                    printf("\nYapmak istediginiz islem giriniz\n------------------\nBakiye Sorgulama->bakiye\nPara cekme->cek\nPara yatirma->yatir\nHesaptan cik->cik\n------------------\n");
+                    fgets(komut, sizeof(komut),stdin);
+                    komut[strcspn(komut,"\n")]=0;
+
                     int len = strlen(komut);
                     for (int i = 0; i < len; i++) {
                         komut[i] = tolower(komut[i]);
@@ -58,8 +58,7 @@ int main() {;
 
 
             }
-            else
-                printf("Kullanci bulunmadi (kullancı ismini doğru yazdiginizdan emin olun");
+
         }
         else if (!(strcmp(komut,"olustur"))){
             char kullanci[50];
