@@ -44,7 +44,7 @@ void Hesapolusturma(char *dosyaismi) {
         if (aptr == NULL) {
             printf("Hesap olusturulamadi.");
         } else {
-            printf("Olusturmak istediginiz hesabin ismini giriniz(büyük küçük harfe dikkat edin):");
+            printf("Olusturmak istediginiz hesabin ismini giriniz(buyuk kucuk harfe dikkat edin):");
             fgets(hesap1.isim, 20, stdin);
             hesap1.isim[strcspn(hesap1.isim,"\n")]=0;
             kelime1=strtok(hesap1.isim," ");
@@ -54,7 +54,7 @@ void Hesapolusturma(char *dosyaismi) {
                 kelime2="";
             }
 
-            printf("Soyismini giriniz(büyük küçük harfe dikkat edin):");
+            printf("Soyismini giriniz(buyuk kucuk harfe dikkat edin):");
             fgets(hesap1.soyad, 20, stdin);
             printf("Hesaba giris sifrenizi belirleyiniz(4 haneli):");
             scanf("%d", &hesap1.sifre);
