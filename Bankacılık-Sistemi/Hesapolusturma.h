@@ -5,7 +5,7 @@
 #include <ctype.h>
 
 
-void Hesapolusturma() {
+void Hesapolusturma(char *dosyaismi) {
     int sifre2;
 
     struct hesap {
@@ -19,7 +19,6 @@ void Hesapolusturma() {
     FILE *aptr;
 
     struct hesap hesap1;
-    char dosyaismi[50];
 
     printf("Hesabinizin bankada var olabilmesi icin oncelike isim ve soyisim giriniz(kucuk harf ve bitisik olarak):");
     fgets(dosyaismi, 50, stdin);
@@ -45,7 +44,7 @@ void Hesapolusturma() {
         if (aptr == NULL) {
             printf("Hesap olusturulamadi.");
         } else {
-            printf("Olusturmak istediginiz hesabin ismini giriniz:");
+            printf("Olusturmak istediginiz hesabin ismini giriniz(büyük küçük harfe dikkat edin):");
             fgets(hesap1.isim, 20, stdin);
             hesap1.isim[strcspn(hesap1.isim,"\n")]=0;
             kelime1=strtok(hesap1.isim," ");
@@ -55,7 +54,7 @@ void Hesapolusturma() {
                 kelime2="";
             }
 
-            printf("Soyismini giriniz:");
+            printf("Soyismini giriniz(büyük küçük harfe dikkat edin):");
             fgets(hesap1.soyad, 20, stdin);
             printf("Hesaba giris sifrenizi belirleyiniz(4 haneli):");
             scanf("%d", &hesap1.sifre);
@@ -78,3 +77,4 @@ void Hesapolusturma() {
         }
 
     }
+
