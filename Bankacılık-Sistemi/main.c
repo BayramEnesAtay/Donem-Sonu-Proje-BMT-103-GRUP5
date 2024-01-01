@@ -17,8 +17,7 @@ int main() {;
         memset(islemler,0,sizeof(islemler));
 
         printf("Komut giriniz(komut listesi icin 'yardim' yaziniz):\n");
-        fgets(komut, sizeof(komut),stdin);
-        komut[strcspn(komut,"\n")]=0;
+        scanf("%s", &komut);
         int len = strlen(komut);
         for (int i = 0; i < len; i++) {
             komut[i] = tolower(komut[i]);
@@ -31,8 +30,7 @@ int main() {;
         else if (!(strcmp(komut,"gir"))){
             char kullanci[50];
             printf("Kullanci ad-soyad bosluk birakmadan yazniz:");
-            fgets(kullanci, sizeof(kullanci),stdin);
-            kullanci[strcspn(kullanci,"\n")]=0;
+            scanf("%s",&kullanci);
             if (Hesabagiris(kullanci)==1){
                 gecmis(("%s hesaptan giris yapildi",kullanci));
                 strcat(islemler,kullanci);
@@ -40,17 +38,15 @@ int main() {;
                 gecmis(islemler);
                 while (1){
                     printf("\nYapmak istediginiz islem giriniz\n------------------\nBakiye Sorgulama->bakiye\nPara cekme->cek\nPara yatirma->yatir\nHesaptan cik->cik\n------------------\n");
-                    fgets(komut, sizeof(komut),stdin);
-                    komut[strcspn(komut,"\n")]=0;
+                    scanf("%s",&komut);
 
                     int len = strlen(komut);
                     for (int i = 0; i < len; i++) {
                         komut[i] = tolower(komut[i]);
                     }
                     if (!(strcmp(komut,"bakiye"))){
-                        int bakiye;
-                        bakiye=BakiyeSorgulama(kullanci);
-                        printf("%d", bakiye);
+                        BakiyeSorgulama(kullanci);
+
                     }
                     else if (!(strcmp(komut,"cik")))
                         break;
