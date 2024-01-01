@@ -10,8 +10,11 @@
 #include "ParaCekme-Yatirma_bakiyeSorgulama.h"
 
 int main() {;
+    char islemler[70];
     while (1){
         char komut[10];
+        memset(islemler,0,sizeof(islemler));
+
         printf("Komut giriniz(komut listesi icin 'yardim' yaziniz):\n");
         fgets(komut, 10, stdin);
         komut[strcspn(komut, "\n")] = 0;
@@ -27,11 +30,31 @@ int main() {;
         else if (!(strcmp(komut,"gir"))){
             char kullanci[50];
             printf("Kullanci ad-soyad bosluk birakmadan yazniz:");
-            scanf("%s",&kullanci);
+            fgets(kullanci, sizeof(kullanci), stdin);
+            komut[strcspn(komut, "\n")] = 0;
             printf("hesabagir()\n");
             if (1){
                 gecmis(("%s hesaptan giris yapildi",kullanci));
                 printf("Hesaba giris basariyla tamamladi\n");
+                strcat(islemler,kullanci);
+                strcat(islemler,"giris yapildi");
+                gecmis(islemler);
+                while (1){
+                    printf("Yapmak istediğiniz işlem giriniz\nBakiye Sorgulama->bakiye\nPara cekme->cek\nPara yatirma->yatir\nHesaptan cik->cik\n");
+                    fgets(komut, 10, stdin);
+                    komut[strcspn(komut, "\n")] = 0;
+                    int len = strlen(komut);
+                    for (int i = 0; i < len; i++) {
+                        komut[i] = tolower(komut[i]);
+                    }
+                    if (!(strcmp(komut,"bakiye"))){
+                        int bakiye;
+                        bakiye=BakiyeSorgulama(kullanci);
+                        printf("%d", bakiye);
+                    }
+                    else if (!(strcmp(komut,"cik")))
+                        break;
+                }
 
 
             }
@@ -41,10 +64,10 @@ int main() {;
         else if (!(strcmp(komut,"olustur"))){
             char kullanci[50];
             Hesapolusturma(kullanci);
-            char islem1[70];
-            strcat(islem1,kullanci);
-            strcat(islem1," hesap olusturuldu");
-            gecmis(islem1);
+
+            strcat(islemler,kullanci);
+            strcat(islemler," hesap olusturuldu");
+            gecmis(islemler);
         }
         else
             printf("Gecerli komut giriniz(Turkce harfleri kullanmayin\n");
