@@ -5,7 +5,7 @@
 #include <ctype.h>
 
 
-void Hesapolusturma(char *dosyaismi) {
+void Hesapolusturma(char dosyaismi[50]) {
     int sifre2;
 
     struct hesap {
@@ -16,17 +16,17 @@ void Hesapolusturma(char *dosyaismi) {
 
     };
 
-    FILE *aptr;
+    FILE *dosya;
 
     struct hesap hesap1;
 
     printf("Hesabinizin bankada var olabilmesi icin oncelike isim ve soyisim giriniz(kucuk harf ve bitisik olarak):");
-    fgets(dosyaismi, 50, stdin);
+    scanf("%s",dosyaismi);
 
     int len = strlen(dosyaismi);
+    printf("test");
     for (int i = 0; i < len; i++)
         dosyaismi[i] = tolower(dosyaismi[i]);
-
 
 
         //dosya ismini fgetsle aldigimiz icin otomatikman sonuna\n(yeni satir karakteri) eklenecek.
@@ -36,26 +36,16 @@ void Hesapolusturma(char *dosyaismi) {
         //strcat fonksıyonu ise 2 string parametresi alarak ikinci parametreyi birince parametreye ekleyerek
         //sonucu geri dondurur.
 
-        char*kelime1,*kelime2;
-        dosyaismi[strcspn(dosyaismi, "\n")] = 0;//Aldigimiz stingden \n karakterini cikariyorum.
 
-        aptr = fopen(strcat(dosyaismi, ".txt"), "w");
+        dosya = fopen(strcat(dosyaismi, ".txt"), "w");
 
-        if (aptr == NULL) {
+        if (dosya == NULL) {
             printf("Hesap olusturulamadi.");
         } else {
-            printf("Olusturmak istediginiz hesabin ismini giriniz(buyuk kucuk harfe dikkat edin):");
-            fgets(hesap1.isim, 20, stdin);
-            hesap1.isim[strcspn(hesap1.isim,"\n")]=0;
-            kelime1=strtok(hesap1.isim," ");
-            kelime2=strtok(NULL," ");
-            if(kelime2==NULL)
-            {
-                kelime2="";
-            }
-
+            printf("Olusturmak istediginiz isminizi giriniz(buyuk kucuk harfe dikkat edin;birden fazla isminiz varsa bitişik yaziniz ):");
+            scanf("%s",&hesap1.isim);
             printf("Soyismini giriniz(buyuk kucuk harfe dikkat edin):");
-            fgets(hesap1.soyad, 20, stdin);
+            scanf("%s",&hesap1.soyad);
             printf("Hesaba giris sifrenizi belirleyiniz(4 haneli):");
             scanf("%d", &hesap1.sifre);
             while (hesap1.sifre < 999 || hesap1.sifre > 9999) {
@@ -72,9 +62,8 @@ void Hesapolusturma(char *dosyaismi) {
             printf("Islem basarili,Hesabiniz olusturuldu.");
 
 
-            fprintf(aptr, "Hesap Bilgisi\nIsim : %s%s\nSoyisim : %sSifre : %d\nBakiye : 0 TL",kelime1,kelime2,hesap1.soyad, hesap1.sifre);
-            fclose(aptr);
+            fprintf(dosya, "Hesap Bilgisi\nIsim : %s\nSoyisim : %s\nSifre : %d\nBakiye : 0 TL",hesap1.isim,hesap1.soyad, hesap1.sifre);
+            fclose(dosya);
         }
 
     }
-
