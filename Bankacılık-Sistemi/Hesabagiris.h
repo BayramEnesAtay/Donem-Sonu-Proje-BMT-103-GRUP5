@@ -29,7 +29,7 @@ int Hesabagiris(char kullanici[])//Geri donus turu olarak integer olan ve parame
     if(giris==NULL) // Burada dosyanin acilip acilmadigini kontrol eder.
     {
         perror("Error"); // Error numarasi ve Error turu ekrana yazdirilmistir.
-        printf("Error number:%d",errno);
+        printf("Error number:%d\n",errno);
     }
     else {
 
