@@ -1,4 +1,5 @@
 //Bayram Enes Atay 23181616059
+//Muhammed Ali Atik 23181616601
 //ParaYatirma Fonksıyonu
 
 // Programın derlenmesi için gerekli olan kütüphaneler.
