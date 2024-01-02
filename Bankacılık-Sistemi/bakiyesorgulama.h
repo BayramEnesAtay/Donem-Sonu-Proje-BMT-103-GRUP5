@@ -1,10 +1,10 @@
 //Muhammed Ali Atik 23181616601
-//Para yatirma,cekme, bakiye sorgulama.
+//Bakiye sorgulama fonksiyonu hazirlanmistir.
 
 #include<stdio.h>        // Bu satirlar, programin derlenmesi icin gerekli olan iki kütüphaneyi dahil eder.
 #include<stdlib.h>
 
-void BakiyeSorgulama(char kullanici[50]) {  //Bu satir, "BakiyeSorgulama" adinda bir fonksiyon tanımlar. Bu fonksiyon, kullanicinin bakiyesini sorgulamak icin kullanilir. Fonksiyon, "kullanici" adinda bir parametre alir. Bu parametre, kullanicinin adini iceren bir dizidir.
+void BakiyeSorgulama(char kullanici[50]) {  //Bu satir, "BakiyeSorgulama" adinda bir fonksiyon tanımlar. Bu fonksiyon, kullanicinin bakiyesini sorgulamak icin kullanilir. Fonksiyon, "kullanici" adinda bir parametre alir. Bu parametre, kullanicinin adini  ve soyadini iceren bir dizidir.
     char dosya_adi[100];  //Bu satir, "dosya_adi" adinda bir dizi tanimlar. Bu dizi, kullanicinin dosya adini saklamak icin kullanilir.
 
 
