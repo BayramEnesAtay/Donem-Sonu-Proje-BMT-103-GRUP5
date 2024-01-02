@@ -57,7 +57,9 @@ int ParaCekme(char kullanici2[])
             //Bu satır, dosya okuma pointerını dosyanın başına getirir.
             fseek(belge,0,SEEK_SET);
 
+            //Bu satır, dosyadaki ilk satırı okur ve "cumlee" dizisine atar.
             fgets(cumlee,30,belge);
+            //Bu satır, "cumlee" dizisindeki son satır karakterini siler.
             cumlee[strcspn(cumlee,"\n")]=0;
             fgets(cumlee2,30,belge);
             cumlee2[strcspn(cumlee2,"\n")]=0;
@@ -65,29 +67,38 @@ int ParaCekme(char kullanici2[])
             cumlee3[strcspn(cumlee3,"\n")]=0;
             fgets(cumlee4,30,belge);
             cumlee4[strcspn(cumlee4,"\n")]=0;
+            // Bu satır, "belge" dosyasını kapatır.
             fclose(belge);
 
+            //Bu satır, "yenibelge" adında bir dosya türünde pointer tanımlar.
             FILE *yenibelge;
 
+            //Bu satır, kullanıcının adıyla aynı ada sahip bir dosyayı "w" modunda açar. "w" modu, dosyanın üzerine yazılabilir olduğunu belirtir.
             yenibelge=fopen(kullanici2,"w");
 
+            //Bu satır, dosyanın açılıp açılmadığını kontrol eder. Dosya açılamazsa, bir hata mesajı yazdırılır ve fonksiyon sona erer.
             if(kullanici2==NULL)
             {
                 perror("Error");
                 printf("Error number:%d\n",errno);
             }
+                //Dosya açılabilirse, aşağıdaki işlemler gerçekleştirilir:
             else
             {
+                //Bu satır, "cumlee" dizisini "yenibelge" dosyasına yazar.
                 fprintf(yenibelge,"%s\n",cumlee);
                 fprintf(yenibelge,"%s\n",cumlee2);
                 fprintf(yenibelge,"%s\n",cumlee3);
                 fprintf(yenibelge,"%s\n",cumlee4);
+                //Bu satır, güncellenmiş bakiyeyi "yenibelge" dosyasına yazar.
                 fprintf(yenibelge,"Bakiye : %d TL",bakiye2);
+                //Bu satır, "yenibelge" dosyasını kapatır.
                 fclose(yenibelge);
 
             }
         }
     }
+    //Bu satır, "cekilenpara" değişkeninini fonksiyondan döndürür.
     return cekilenpara;
 }
 
