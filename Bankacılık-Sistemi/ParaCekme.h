@@ -1,18 +1,6 @@
 //Bayram Enes Atay 23181616059
 //Para cekme foonksıyonu.
-void ParaCekme(char kullanici2[]);
 
-int main()
-{
-    char kullanici2[50];
-
-    printf("Kullanici degerini giriniz(isi,soyisim kucuk harfle ve bitisik olarak):");
-    fgets(kullanici2,sizeof(kullanici2)+1,stdin);
-    kullanici2[strcspn(kullanici2,"\n")]=0;
-    ParaCekme(kullanici2);
-    return 0;
-
-}
 void ParaCekme(char kullanici2[])
 {
     FILE *belge;
