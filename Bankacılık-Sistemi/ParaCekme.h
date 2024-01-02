@@ -1,5 +1,6 @@
 //Bayram Enes Atay 23181616059
-//Para cekme foonksıyonu.
+//Muhammed Ali Atik 23181616601
+//Para cekme fonksiyonu.
 
 //Bu satır, "ParaCekme" adında bir fonksiyon tanımlar. Bu fonksiyon, kullanıcı2 nin adını parametre olarak alır ve para çekme işlemini gerçekleştirir.
 int ParaCekme(char kullanici2[])
