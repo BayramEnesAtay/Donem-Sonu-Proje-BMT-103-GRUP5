@@ -20,7 +20,7 @@ void Hesapolusturma(char dosyaismi[50]) {
     //struct hesap turunde hesap1 degiskeni tanimlanmistir.
     struct hesap hesap1;
 
-    printf("------------------\nHesabinizin bankada var olabilmesi icin oncelike isim ve soyisim giriniz(kucuk harf ve bitisik olarak):");
+    printf("------------------\nHesabinizin bankada var olabilmesi icin oncelike isim ve soyisim giriniz(bitisik olarak):");
     //fgets kullanilarak standartinput(klavyeden) deger alinmis ve dosyaismi adli diziye aktarilmistir.
     fgets(dosyaismi, 51,stdin);
     dosyaismi[strcspn(dosyaismi,"\n")] = 0;
@@ -80,7 +80,7 @@ void Hesapolusturma(char dosyaismi[50]) {
             }
             //Bakiye degerini Hesap yeni olusturuldugu icin 0 Tl olarak aldik.
             printf("Bakiye = 0 TL\n");
-            printf("------------------\nIslem basarili,Hesabiniz olusturuldu\n.");
+            printf("------------------\nIslem basarili,Hesabiniz olusturuldu\n");
 
             
             fprintf(dosya, "Hesap Bilgisi\nIsim : %s%s\nSoyisim : %s\nSifre : %d\nBakiye : 0 TL",kelime1,kelime2,hesap1.soyad, hesap1.sifre);
