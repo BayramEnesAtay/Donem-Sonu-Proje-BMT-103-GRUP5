@@ -1,14 +1,16 @@
 //Abdülselam İsmail 23181616010
-//Bu bankacılık programımız için gerekli olan "menu" için yazılmış kodtur. Buraya diğer tüm fonksiyonlar atılacak
-//Menu daha yapımaşamasında
+//Bu bankacılık programımız için gerekli olan "menu" için yazılmış kodtur. Buraya diğer tüm fonksiyonlar header şeklinde atıldı
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include "gecmis.h"
 #include "Hesapolusturma.h"
-#include "ParaCekme-Yatirma_bakiyeSorgulama.h"
+#include "bakiyeSorgulama.h"
 #include "Hesabagiris.h"
+#include "ParaCekme.h"
+#include "ParaYatirma.h"
 
 int main() {;
     char islemler[100];
@@ -53,13 +55,40 @@ int main() {;
                         strcat(islemler,kullanci);
                         strcat(islemler," bakiye sorgulama");
                         gecmis(islemler);
+                    }
+                    else if (!(strcmp(komut,"yatir"))){
+                        int paraInt = ParaYatirma(kullanci);
+                        char paraStr[6];
+
+                        sprintf(paraStr,"%d",paraInt);
+                        strcpy(islemler,kullanci);
+                        strcat(islemler," ");
+                        strcat(islemler, paraStr);
+                        strcat(islemler,"TL yatirildi");
+                        gecmis(islemler);
+                    }
+
+                    else if (!(strcmp(komut,"cek"))){
+                        int paraInt = ParaCekme(kullanci);
+                        char paraStr[6];
+
+                        sprintf(paraStr,"%d",paraInt);
+                        strcpy(islemler,kullanci);
+                        strcat(islemler," ");
+                        strcat(islemler, paraStr);
+                        strcat(islemler,"TL cekildi");
+                        gecmis(islemler);
 
                     }
                     else if (!(strcmp(komut,"cik"))){
-                        
+                        strcat(islemler,kullanci);
+                        strcat(islemler," cikis yapildi");
+                        gecmis(islemler);
                         printf("------------------\nCikis basariyla yapildi\n");
                         break;
                     }
+                    else
+                        printf("Gecerli komut giriniz!!");
                 }
 
 
@@ -82,4 +111,5 @@ int main() {;
     }
     return 0;
 }
+
 
