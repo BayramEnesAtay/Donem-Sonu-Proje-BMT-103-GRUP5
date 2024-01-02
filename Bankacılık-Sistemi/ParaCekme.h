@@ -1,7 +1,7 @@
 //Bayram Enes Atay 23181616059
 //Para cekme foonksıyonu.
 
-void ParaCekme(char kullanici2[])
+int ParaCekme(char kullanici2[])
 {
     FILE *belge;
     int i;
@@ -10,12 +10,12 @@ void ParaCekme(char kullanici2[])
     int cekilenpara;
 
 
-    belge=fopen(strcat(kullanici2,".txt"),"r");
+    belge=fopen(kullanici2,"r");
 
     if(belge==NULL)
     {
         perror("Error");
-        printf("Error number:%d",errno);
+        printf("Error number:%d\n",errno);
     }
     else
     {
@@ -32,13 +32,13 @@ void ParaCekme(char kullanici2[])
 
         if(cekilenpara>bakiye2)
         {
-            printf("Yetersiz Bakiye!!");
+            printf("Yetersiz Bakiye!!\n");
 
         }
         else if(cekilenpara<=bakiye2)
         {
             bakiye2 -=cekilenpara;
-            printf("Yeni Bakiye:%d",bakiye2);
+            printf("Yeni Bakiye:%d TL\n",bakiye2);
 
             char cumlee[30],cumlee2[30],cumlee3[30],cumlee4[30];
             fseek(belge,0,SEEK_SET);
@@ -60,7 +60,7 @@ void ParaCekme(char kullanici2[])
             if(kullanici2==NULL)
             {
                 perror("Error");
-                printf("Error number:%d",errno);
+                printf("Error number:%d\n",errno);
             }
             else
             {
@@ -74,5 +74,6 @@ void ParaCekme(char kullanici2[])
             }
         }
     }
-
+    return cekilenpara;
 }
+
