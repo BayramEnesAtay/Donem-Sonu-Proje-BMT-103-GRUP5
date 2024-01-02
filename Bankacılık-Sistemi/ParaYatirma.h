@@ -1,12 +1,13 @@
 //Bayram Enes Atay 23181616059
-//Para yatirma Fonksıyonu.
+//ParaYatirma Fonksıyonu
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<errno.h>
 #include<string.h>
 
 
-void Paracekme(char kullanici[])
+void ParaYatirma(char kullanici[])
 {
     FILE *dosya;
     int i;
@@ -19,6 +20,8 @@ void Paracekme(char kullanici[])
     if(dosya==NULL)
     {
         perror("Error");
+
+
         printf("Error number:%d",errno);
     }
     else
