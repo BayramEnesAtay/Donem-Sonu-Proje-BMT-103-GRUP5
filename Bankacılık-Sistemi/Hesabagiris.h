@@ -1,7 +1,5 @@
 //Bayram Enes Atay 23181616059
 //Hesaba giris fonksıyonunun son halidir.
-//Bayram Enes Atay 23181616059
-//Hesaba giris fonksıyonunun son halidir.
 #include<stdio.h>
 #include<errno.h>
 #include<string.h>
@@ -33,7 +31,9 @@ int Hesabagiris(char kullanici[])
         printf("Error number:%d",errno);
     }
     else {
-        printf("------------------\nIsminizi giriniz(Bitisik yaziniz):");
+
+
+        printf("------------------\nIsminizi giriniz(Buyuk-kucuk harflere dikkat edin):");
         fgets(hesap.isim, sizeof(hesap.isim),stdin);
         hesap.isim[strcspn(hesap.isim,"\n")] = 0;
         char*kelime1,*kelime2;
@@ -66,7 +66,7 @@ int Hesabagiris(char kullanici[])
         }
         fseek(giris, 0, SEEK_SET);
 
-        printf("------------------\nSoyisminizi giriniz:");
+        printf("------------------\nSoyisminizi giriniz(Buyuk-kucuk harflere dikkat edin):");
         fgets(hesap.soyisim, sizeof(hesap.soyisim),stdin);
         hesap.soyisim[strcspn(hesap.soyisim,"\n")] = 0;
 
