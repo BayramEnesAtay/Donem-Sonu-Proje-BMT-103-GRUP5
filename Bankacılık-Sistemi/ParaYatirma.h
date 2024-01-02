@@ -1,13 +1,14 @@
 //Bayram Enes Atay 23181616059
 //ParaYatirma Fonksıyonu
 
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<errno.h>
 #include<string.h>
 
 
-void ParaYatirma(char kullanici[])
+int ParaYatirma(char kullanici[])
 {
     FILE *dosya;
     int i;
@@ -15,14 +16,14 @@ void ParaYatirma(char kullanici[])
     int bakiye;
     int para;
 
-    dosya=fopen(strcat(kullanici,".txt"),"r");
+    dosya=fopen(kullanici,"r");
 
     if(dosya==NULL)
     {
         perror("Error");
 
 
-        printf("Error number:%d",errno);
+        printf("Error number:%d\n",errno);
     }
     else
     {
@@ -36,7 +37,7 @@ void ParaYatirma(char kullanici[])
         scanf("%d",&para);
 
         bakiye+=para;
-        printf("Toplam bakiyeniz: %d",bakiye);
+        printf("Toplam bakiyeniz: %d TL\n",bakiye);
 
         fseek(dosya,0,SEEK_SET);
         char cumle[30],cumle2[30],cumle3[30],cumle4[30];
@@ -56,7 +57,7 @@ void ParaYatirma(char kullanici[])
         if(kullanici==NULL)
         {
             perror("Error");
-            printf("Error number : %d",errno);
+            printf("Error number : %d\n",errno);
         }
         else
         {
@@ -68,4 +69,5 @@ void ParaYatirma(char kullanici[])
             fclose(dosya2);
         }
     }
+    return para;
 }
