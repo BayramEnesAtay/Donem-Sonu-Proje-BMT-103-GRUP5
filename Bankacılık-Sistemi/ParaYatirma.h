@@ -5,19 +5,6 @@
 #include<errno.h>
 #include<string.h>
 
-void Paracekme(char kullanici[]);
-
-int main()
-{
-    char kullanici[50];
-
-    printf("Kullanici degerini giriniz(isi,soyisim kucuk ve bitisik):");
-    fgets(kullanici,sizeof(kullanici)+1,stdin);
-    kullanici[strcspn(kullanici,"\n")]=0;
-    Paracekme(kullanici);
-    return 0;
-
-}
 
 void Paracekme(char kullanici[])
 {
