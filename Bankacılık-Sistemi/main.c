@@ -165,7 +165,7 @@ int main() {
         else
 
             //Geçersiz komut yazıldığında programın uyarı vermesş sağlanıyor
-            printf("Gecerli komut giriniz(Turkce harfleri kullanmayin\n");
+            printf("Gecerli komut giriniz(Turkce harfleri kullanmayin)\n");
 
 
 
