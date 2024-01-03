@@ -138,6 +138,7 @@ int Hesabagiris(char kullanici[])//Geri donus turu olarak integer olan ve parame
                     printf("------------------\nDogru girdiniz.");
                     sayac2+=1;
                     printf("\n------------------\nHesaba basarili bir sekilde giris yapildi!!\n");
+                    fclose(giris);//fclose ile dosya kapatılmıştır
                     return 1;
                 }
                 kelime4=strtok(NULL," ");
