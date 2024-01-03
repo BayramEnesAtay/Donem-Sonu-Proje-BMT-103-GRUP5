@@ -103,5 +103,5 @@ int ParaYatirma(char kullanici[])
         }
     }
     return para;
-    //Bu satır, "para" değişkeninin değerini fonksiyondan döndürür.
+    //Bu satır, "para" değişkenini fonksiyondan döndürür.
 }
