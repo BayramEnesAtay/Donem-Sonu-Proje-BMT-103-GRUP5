@@ -60,7 +60,7 @@ void Hesapolusturma(char dosyaismi[50]) {
                 kelime2="";//Eger kullanici tek isimli ise kelime2 null degerine atanmasin diye "" olarak aldim.
             }
 
-            printf("------------------\nSoyismini giriniz(buyuk kucuk harfe dikkat edin):");
+            printf("------------------\nSoyisminizi giriniz(buyuk kucuk harfe dikkat edin):");
             scanf("%s",&hesap1.soyad);
             printf("------------------\nHesaba giris sifrenizi belirleyiniz(4 haneli):");
             scanf("%d", &hesap1.sifre);
