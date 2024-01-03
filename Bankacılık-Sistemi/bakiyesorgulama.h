@@ -15,7 +15,7 @@ void BakiyeSorgulama(char kullanici[50]) {  //Bu satir, "BakiyeSorgulama" adinda
         printf("------------------\nDosya acilamadi!\n");
 
     }
-
+    else{
     int bakiye;  // Bu satir, "bakiye" adinda bir tamsayi degiskeni tanımlar. Bu degisken, kullanicinin bakiyesini saklamak icin kullanilir.
     char satir6[30];  //Bu satir, "satir6" adinda bir dizi tanımlar. Bu dizi, dosyadan okunan satirlari saklamak icin kullanilir.
     for (int i = 1; i <= 5; i++) {  //Bu dongu, dosyadaki ilk 5 satiri okur.
@@ -24,6 +24,7 @@ void BakiyeSorgulama(char kullanici[50]) {  //Bu satir, "BakiyeSorgulama" adinda
             printf("------------------\n%s\n", satir6);
             break;
         }
+    }
     }
     fclose(dosya);  //Bu satir, "dosya" dosyasini kapatir.
 
