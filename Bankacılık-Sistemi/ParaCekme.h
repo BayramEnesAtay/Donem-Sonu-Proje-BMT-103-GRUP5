@@ -3,7 +3,12 @@
 //Muhammed Ali Atik 23181616601
 //Para cekme fonksiyonu.
 
-//Bu satır, "ParaCekme" adında bir fonksiyon tanımlar. Bu fonksiyon, kullanıcı2 nin adını parametre olarak alır ve para çekme işlemini gerçekleştirir.
+#include<stdio.h>
+#include<stdlib.h>//Fonksiyon icin gerekli olan kutuphaneler tanimlanmistir.
+#include<errno.h>
+#include<string.h>
+
+//Bu satır, "ParaCekme" adında bir fonksiyon tanımlar. Bu fonksiyon, kullanici2 adli char dizisini parametre olarak alir ve geri donus turu integerdir.
 int ParaCekme(char kullanici2[])
 {
     FILE *belge;
@@ -15,14 +20,14 @@ int ParaCekme(char kullanici2[])
 //Bu satır, kullanıcı2 nin adıyla aynı ada sahip bir dosyayı "r" modunda açar. "r" modu, dosyanın yalnızca okunabilir olduğunu belirtir.
     belge=fopen(kullanici2,"r");
 
-    // Bu satır, dosyanın açılıp açılmadığını kontrol eder. Dosya açılamazsa, bir hata mesajı yazdırılır ve fonksiyon sona erer.
+    // Bu satır, dosyanın bulunup bulunmadigini kontrol eder. Dosya bulunamazsa, bir hata mesajı yazdırılır ve fonksiyon sona erer.
     if(belge==NULL)
     {
         perror("Error");
         printf("Error number:%d\n",errno);
     }
 
-    //Dosya açılabilirse, aşağıdaki işlemler gerçekleştirilir:    
+    //Dosya bulunursa, aşağıdaki işlemler gerçekleştirilir:    
     else
     {
         //Bu döngü, dosyadaki ilk 5 satırı okur ve "sira" dizisine atar.
@@ -32,7 +37,7 @@ int ParaCekme(char kullanici2[])
             sira[strcspn(sira,"\n")]=0;
         }
 
-        //Bu satır, dosya okuma işaretçisini geçerli konumda bırakır.
+        //Bu satır, dosya okuma işaretçisini bulundugu konumda bırakır.
         fseek(belge, 0, SEEK_CUR);
         //Bu satır, "sira" dizisindeki 5. öğeyi (bakiye) tamsayıya dönüştürür ve "bakiye2" değişkenine atar.
         sscanf(sira,"%*s%*c%*c%*c%d%*c%*s",&bakiye2);
@@ -46,22 +51,22 @@ int ParaCekme(char kullanici2[])
             printf("Yetersiz Bakiye!!\n");
 
         }
-            //Bu satır, çekilen paranın bakiyeden az veya eşit olup olmadığını kontrol eder. Eğer az veya eşitse, aşağıdaki işlemler gerçekleştirilir:
+            //Bu satır, çekilen paranın bakiyeden az veya eşit olup olmadığını kontrol eder. Eğer az veya eşitse, aşağıdaki işlemler gerçekleştirilir.
         else if(cekilenpara<=bakiye2)
         {
-            //Bu satır, bakiye 2 den çekilen parayı çıkarır.
+            //Bu satır, bakiye2 den çekilen parayı çıkarır.
             bakiye2 -=cekilenpara;
             //Güncel bakiyeyi ekrana yazdırır.
             printf("Yeni Bakiye:%d TL\n",bakiye2);
 
-            //Bu satırlar, dosyadaki ilk 4 satırı saklamak için dört dizi tanımlar.
+            //Bu satır, dosyadaki ilk 4 satırı saklamak için dört dizi tanımlar.
             char cumlee[30],cumlee2[30],cumlee3[30],cumlee4[30];
-            //Bu satır, dosya okuma pointerını dosyanın başına getirir.
+            //Bu satır, dosya okuma isaretcisini dosyanın başına getirir.
             fseek(belge,0,SEEK_SET);
 
             //Bu satır, dosyadaki ilk satırı okur ve "cumlee" dizisine atar.
             fgets(cumlee,30,belge);
-            //Bu satır, "cumlee" dizisindeki son satır karakterini siler.
+            //Bu satır, "cumlee" dizisindeki \n(yeni satir) karakterini siler.
             cumlee[strcspn(cumlee,"\n")]=0;
             fgets(cumlee2,30,belge);
             cumlee2[strcspn(cumlee2,"\n")]=0;
@@ -72,14 +77,14 @@ int ParaCekme(char kullanici2[])
             // Bu satır, "belge" dosyasını kapatır.
             fclose(belge);
 
-            //Bu satır, "yenibelge" adında bir dosya türünde pointer tanımlar.
+            //Bu satır, "yenibelge" adında bir FILE(dosya) türünde pointer tanımlar.
             FILE *yenibelge;
 
             //Bu satır, kullanıcının adıyla aynı ada sahip bir dosyayı "w" modunda açar. "w" modu, dosyanın üzerine yazılabilir olduğunu belirtir.
             yenibelge=fopen(kullanici2,"w");
 
             //Bu satır, dosyanın açılıp açılmadığını kontrol eder. Dosya açılamazsa, bir hata mesajı yazdırılır ve fonksiyon sona erer.
-            if(kullanici2==NULL)
+            if(yenibelge==NULL)
             {
                 perror("Error");
                 printf("Error number:%d\n",errno);
